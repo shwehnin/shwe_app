@@ -32,6 +32,7 @@ class AppColors {
   static const Color scratchGold3 = Color(0xFFFFAB00);
   static const Color lightText = Color(0xFFD4BAFF);
   static const Color cardBg = Color(0xFF1E1542);
+  static const Color surface = Color(0xFF150F2E);
 
   // ── Dark surfaces ─────────────────────────────────────────────────────────
   static const Color darkBg = Color(0xFF0D1117);

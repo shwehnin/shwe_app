@@ -4,6 +4,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:new_lion/utils/app_theme.dart';
 import 'utils/app_notification/fcm.dart';
 import 'config/localization/app_lang.dart';
 import 'config/localization/localization.dart';
@@ -53,71 +54,73 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderWidget(
       child: AdaptiveTheme(
-        light: ThemeData(
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor: Colors.red,
-            selectionColor: Colors.grey,
-            selectionHandleColor: Colors.black,
-          ),
-          fontFamily: Fonts.en,
-          useMaterial3: true,
-          brightness: Brightness.light,
-          primaryColor: AppColors.primary,
-          colorScheme: const ColorScheme.light(
-            primary: AppColors.primary, // navy — buttons, icons, accents
-            secondary: Colors.orange,
-            surface: Colors.white, // cards
-            surfaceContainerHighest:
-                AppColors.lightTint, // subtle tint surfaces
-          ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: AppColors.lightBg,
-            foregroundColor: Colors.white,
-            elevation: 0,
-            titleTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: Fonts.en,
-            ),
-            centerTitle: true,
-            iconTheme: IconThemeData(color: Colors.white),
-          ),
-          scaffoldBackgroundColor: AppColors.lightBg,
-        ),
+        light: AppTheme.light,
+        dark: AppTheme.dark,
+        // light: ThemeData(
+        //   textSelectionTheme: TextSelectionThemeData(
+        //     cursorColor: Colors.red,
+        //     selectionColor: Colors.grey,
+        //     selectionHandleColor: Colors.black,
+        //   ),
+        //   fontFamily: Fonts.en,
+        //   useMaterial3: true,
+        //   brightness: Brightness.light,
+        //   primaryColor: AppColors.primary,
+        //   colorScheme: const ColorScheme.light(
+        //     primary: AppColors.primary, // navy — buttons, icons, accents
+        //     secondary: Colors.orange,
+        //     surface: Colors.white, // cards
+        //     surfaceContainerHighest:
+        //         AppColors.lightTint, // subtle tint surfaces
+        //   ),
+        //   appBarTheme: const AppBarTheme(
+        //     backgroundColor: AppColors.lightBg,
+        //     foregroundColor: Colors.white,
+        //     elevation: 0,
+        //     titleTextStyle: TextStyle(
+        //       color: Colors.white,
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.bold,
+        //       fontFamily: Fonts.en,
+        //     ),
+        //     centerTitle: true,
+        //     iconTheme: IconThemeData(color: Colors.white),
+        //   ),
+        //   scaffoldBackgroundColor: AppColors.lightBg,
+        // ),
 
-        dark: ThemeData(
-          fontFamily: Fonts.en,
-          useMaterial3: true,
-          brightness: Brightness.dark,
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor: Colors.red,
-            selectionColor: Colors.grey,
-            selectionHandleColor: Colors.black,
-          ),
-          primaryColor: AppColors.darkSurface, // ← bright blue accent for dark
-          scaffoldBackgroundColor: AppColors.darkBg,
-          colorScheme: const ColorScheme.dark(
-            primary:
-                AppColors.darkSurface, // ← bright accent — visible on dark bg
-            secondary: Colors.amber,
-            surface: AppColors.darkSurface, // cards
-            surfaceContainerHighest: AppColors.darkCard2,
-          ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: AppColors.darkSurface,
-            foregroundColor: Colors.white,
-            elevation: 0,
-            centerTitle: true,
-            titleTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: Fonts.en,
-            ),
-            iconTheme: IconThemeData(color: Colors.white),
-          ),
-        ),
+        // dark: ThemeData(
+        //   fontFamily: Fonts.en,
+        //   useMaterial3: true,
+        //   brightness: Brightness.dark,
+        //   textSelectionTheme: TextSelectionThemeData(
+        //     cursorColor: Colors.red,
+        //     selectionColor: Colors.grey,
+        //     selectionHandleColor: Colors.black,
+        //   ),
+        //   primaryColor: AppColors.darkSurface, // ← bright blue accent for dark
+        //   scaffoldBackgroundColor: AppColors.darkBg,
+        //   colorScheme: const ColorScheme.dark(
+        //     primary:
+        //         AppColors.darkSurface, // ← bright accent — visible on dark bg
+        //     secondary: Colors.amber,
+        //     surface: AppColors.darkSurface, // cards
+        //     surfaceContainerHighest: AppColors.darkCard2,
+        //   ),
+        //   appBarTheme: const AppBarTheme(
+        //     backgroundColor: AppColors.darkSurface,
+        //     foregroundColor: Colors.white,
+        //     elevation: 0,
+        //     centerTitle: true,
+        //     titleTextStyle: TextStyle(
+        //       color: Colors.white,
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.bold,
+        //       fontFamily: Fonts.en,
+        //     ),
+        //     iconTheme: IconThemeData(color: Colors.white),
+        //   ),
+        // ),
         initial: savedTheme ?? AdaptiveThemeMode.light,
         builder: (light, dark) => MaterialApp.router(
           title: '2D MM Lucky7',

@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/services.dart';
 import 'package:new_lion/admob/ad_helper.dart';
-import 'package:new_lion/config/localization/localization.dart';
-import 'package:new_lion/config/routes/route_locations.dart';
 import 'package:new_lion/data/models/chat_message_model.dart';
 import 'package:new_lion/data/models/in_app_message.dart';
 import 'package:new_lion/data/models/nav_item.dart';
@@ -13,15 +11,16 @@ import 'package:new_lion/data/models/user_model.dart';
 import 'package:new_lion/pages/gift/gift.dart';
 import 'package:new_lion/pages/home/home.dart';
 import 'package:new_lion/pages/home/widgets/in_app_dialog.dart';
+import 'package:new_lion/pages/layout/widgets/app_drawer.dart';
 import 'package:new_lion/pages/layout/widgets/custom_bottom_navbar.dart';
 import 'package:new_lion/pages/threed_calendar/threed_calendar.dart';
 import 'package:new_lion/pages/twod_calendar/twod_calendar.dart';
 import 'package:new_lion/provider/block_provider.dart';
 import 'package:new_lion/provider/live_provider.dart';
 import 'package:new_lion/provider/public_chat_provider.dart';
+import 'package:new_lion/utils/app_colors.dart';
 import 'package:new_lion/utils/app_notification/fcm.dart';
 import 'package:new_lion/utils/const.dart';
-import 'package:new_lion/utils/extension.dart';
 import 'package:new_lion/utils/global.dart';
 import 'package:new_lion/utils/images.dart';
 import 'package:new_lion/utils/ws_client.dart';
@@ -141,7 +140,15 @@ class _LayoutState extends State<Layout> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
     return Scaffold(
+      backgroundColor: AppColors.lightBg,
+      drawer: AppDrawer(),
       appBar: CustomAppbar(title: "Shwe 2D"),
       body: IndexedStack(index: _selectedIndex, children: _pages),
       bottomNavigationBar: CustomBottomNavbar(
